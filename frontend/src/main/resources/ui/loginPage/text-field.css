@@ -1,0 +1,39 @@
+.input-field {
+    -fx-font-family: Nunito, sans-serif;
+    -fx-font-size: 14;
+    -fx-text-fill: #282d32;
+
+    -fx-border-color: #ffffff;
+    -fx-background-color: #f5f7fa;
+}
+
+.accept-button {
+    -fx-font-family: Nunito, sans-serif;
+
+    -fx-border-style: hidden;
+    -fx-border-color: #ffffff;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #1d5deb;
+    -fx-background-radius: 5;
+    -fx-background-size: 0.9;
+
+    -fx-font-size: 16;
+
+}
+
+.accept-button:hover {
+    -fx-background-color: #2a6aef;
+}
+
+.accept-button:pressed {
+    -fx-background-color: #1848b6
+}
+
+.text-link {
+    -fx-font-size: 12;
+    -fx-text-fill: #1d5deb;
+}
+
+.text-link:hover {
+    -fx-underline: true;
+}
