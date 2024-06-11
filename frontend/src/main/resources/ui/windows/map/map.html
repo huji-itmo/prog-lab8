@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My cities visualization</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+        html, body, #myMap {
+            width: 100%; height: 100%; padding: 0; margin: 0;
+        }
+    </style>
+    <script src="https://api-maps.yandex.ru/2.0-stable/?apikey=%api-key&load=package.full&lang=%lang" type="text/javascript"></script>
+</head>
+<body>
+<div id="myMap"></div>
+<script>
+    let myMap;
+
+    ymaps.ready(init);
+
+    function init() {
+        myMap = new ymaps.Map ('myMap', {
+            center: [55.75, 37.61],
+            zoom: 3,
+            type: 'yandex#hybrid'
+        });
+        myMap.controls
+            .add('mapTools')       // стандартные кнопки
+            .add('typeSelector')   // переключатель типа карты
+            .add('zoomControl');   // изменение масштаба
+
+        alert("loaded!")
+    }
+
+    function addNewMark(x_coord, y_coord, iconContentStr, balloonContentStr) {
+        const myPlacemark = new ymaps.Placemark([x_coord, y_coord], {
+            iconContent: iconContentStr,
+            balloonContent: balloonContentStr
+        }, {
+            preset: 'twirl#blueStretchyIcon'
+        });
+        myMap.geoObjects.add(myPlacemark);
+    }
+</script>
+</body>
+</html>

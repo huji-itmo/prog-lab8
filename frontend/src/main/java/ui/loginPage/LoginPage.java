@@ -19,7 +19,6 @@ public class LoginPage {
         stage.setScene(scene);
 
         stage.show();
-
     }
 
 }

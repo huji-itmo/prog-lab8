@@ -1,0 +1,55 @@
+.header {
+    -fx-background-color: white;
+}
+
+.prompt_section {
+    -fx-background-color: linear-gradient(to bottom, #1f50e8, #3b66eb);
+}
+
+.data-command-text {
+    -fx-font-family: Nunito, sans-serif;
+    -fx-font-size: 12;
+    -fx-fill: white;
+    -fx-text-alignment: center;
+}
+
+.main-command-query {
+    -fx-border-style: none;
+    -fx-background-color: white;
+    -fx-border-radius: 5, 15, 15, 15;
+}
+
+.h-three-text {
+    -fx-font-family: Nunito, sans-serif;
+    -fx-font-size: 22;
+    -fx-fill: black;
+}
+
+#logo-left {
+    -fx-fill: #0065b1;
+    -fx-font-family: Nunito, sans-serif;
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+}
+#logo-right {
+    -fx-fill: #ee3f58;
+    -fx-font-family: Nunito, sans-serif;
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+}
+
+.carousel-item {
+    -fx-background-radius: 7;
+    -fx-background-color: radial-gradient(center 75% 25% , radius 90% , #b8d7ff, #e2e8ff);;
+}
+
+.carousel-item:hover {
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}
+
+.carousel-scroll-pane {
+    -fx-border-style: none;
+    -fx-background-size: 0;
+    -fx-background-color: rgba(255,255,255,0);
+}

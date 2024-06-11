@@ -18,10 +18,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import logic.ConnectionWithDatabaseSingleton;
 import ui.localization.LocalizationManager;
+import ui.mainPage.MainView;
 
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.List;
@@ -117,12 +120,14 @@ public class LoginController {
 
         CommandExecutionResult result = ConnectionWithDatabaseSingleton.getInstance().sendOneShot(request);
 
-        if (result.getCode() == 200) {
-            ConnectionWithDatabaseSingleton.getInstance().setSession(result.getSessionByteArray());
-            switchScene();
-        } else {
+        if (result.getCode() != 200) {
             showError(result);
+            return;
         }
+
+        ConnectionWithDatabaseSingleton.getInstance().setSession(result.getSessionByteArray());
+        ConnectionWithDatabaseSingleton.setUserName(loginTextField.getText());
+        switchScene();
     }
 
     private void showError(CommandExecutionResult result) {
@@ -131,7 +136,11 @@ public class LoginController {
     }
 
     private void switchScene() {
-        System.out.println("Success");
+        try {
+            MainView.show((Stage) loginAnchorPaneHolder.getScene().getWindow());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void onRegisterButtonClick(MouseEvent mouseEvent) {

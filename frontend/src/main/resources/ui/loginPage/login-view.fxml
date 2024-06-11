@@ -42,7 +42,7 @@
                                  <children>
                                     <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <TextField id="text-field" fx:id="loginTextField" onKeyTyped="#checkLoginNotEmpty" prefHeight="35.0" prefWidth="200.0" promptText="%login.loginTextPrompt" styleClass="input-field" stylesheets="@text-field.css">
+                                          <TextField id="text-field" fx:id="loginTextField" onKeyTyped="#checkLoginNotEmpty" prefHeight="35.0" prefWidth="200.0" promptText="%login.loginTextPrompt" styleClass="input-field" stylesheets="@login_page.css">
                                              <font>
                                                 <Font name="Nunito Regular" size="14.0" />
                                              </font>
@@ -60,7 +60,7 @@
                                  <children>
                                     <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <PasswordField fx:id="passwordField" onKeyTyped="#checkPassword" prefHeight="34.0" prefWidth="198.0" promptText="%login.passwordTextPrompt" styleClass="input-field" stylesheets="@text-field.css">
+                                          <PasswordField fx:id="passwordField" onKeyTyped="#checkPassword" prefHeight="34.0" prefWidth="198.0" promptText="%login.passwordTextPrompt" styleClass="input-field" stylesheets="@login_page.css">
                                              <font>
                                                 <Font name="Nunito Regular" size="14.0" />
                                              </font>
@@ -70,7 +70,7 @@
                                     </VBox>
                                  </children>
                               </AnchorPane>
-                              <Button id="login-button" fx:id="loginButton" ellipsisString="" onAction="#onLoginButtonClick" prefHeight="35.0" prefWidth="199.0" styleClass="accept-button" stylesheets="@text-field.css" text="%login.toLoginButtonText" textAlignment="CENTER">
+                              <Button id="login-button" fx:id="loginButton" ellipsisString="" onAction="#onLoginButtonClick" prefHeight="35.0" prefWidth="199.0" styleClass="accept-button" stylesheets="@login_page.css" text="%login.toLoginButtonText" textAlignment="CENTER">
                                  <font>
                                     <Font name="Nunito Regular" size="14.0" />
                                  </font>
