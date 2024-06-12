@@ -103,9 +103,6 @@ public class LoginController {
     }
 
     public void onLoginButtonClick(ActionEvent actionEvent) {
-        System.out.println("login: " + loginTextField.getText());
-        System.out.println("password: " + passwordField.getText());
-
         boolean allGood = checkIsEmpty();
 
         if (!allGood) {
@@ -119,7 +116,12 @@ public class LoginController {
         } else {
             data = new LoginCommandData();
         }
-        Request request = new Request(data, List.of(loginTextField.getText(), PasswordHasher.hashPassword(passwordField.getText())));
+
+        List<Object> args = List.of(
+                loginTextField.getText().strip(),
+                PasswordHasher.hashPassword(passwordField.getText().strip()));
+
+        Request request = new Request(data, args);
 
         CommandExecutionResult result = ConnectionWithDatabaseSingleton.getInstance().sendOneShot(request);
 
