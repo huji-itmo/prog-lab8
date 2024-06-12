@@ -9,6 +9,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
@@ -76,6 +77,20 @@
                                  </font>
                               </Button>
                               <Text fx:id="registrationText" fill="#1d5deb" onMouseClicked="#onRegisterButtonClick" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-link" text="%login.registerButtonText" />
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                                 <children>
+                                    <ImageView fitHeight="24.0" fitWidth="36.0" onMouseClicked="#onClickSpain" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Flag_of_Spain.svg.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="24.0" fitWidth="36.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#onClickRussia" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Flag-Rossiyskoy-Federatsii.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
                            </children>
                         </VBox>
                      </children>
@@ -84,7 +99,7 @@
                <effect>
                   <DropShadow height="30.0" radius="14.5" width="30.0">
                      <color>
-                        <Color opacity="0.09194529056549072" />
+                        <Color opacity="0.04939209669828415" />
                      </color>
                   </DropShadow>
                </effect>

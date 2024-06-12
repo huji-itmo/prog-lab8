@@ -9,7 +9,9 @@ import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point3D;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -181,5 +183,32 @@ public class LoginController {
         transition.setNode(loginAnchorPaneHolder);
         transition.play();
         transition.setOnFinished(onFinished);
+    }
+
+    public void onClickSpain(MouseEvent mouseEvent) {
+        LocalizationManager.setLocalizationName("es_ES");
+        reloadScene();
+        
+    }
+
+    public void onClickRussia(MouseEvent mouseEvent) {
+        LocalizationManager.setLocalizationName("ru_RU");
+        reloadScene();
+    }
+
+    void reloadScene() {
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(LoginPage.class.getResource("login-view.fxml"));
+            LocalizationManager.addLocalizationBundle(fxmlLoader, "localization.login");
+            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            Stage stage = (Stage)loginAnchorPaneHolder.getScene().getWindow();
+            stage.setScene(scene);
+
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

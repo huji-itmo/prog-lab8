@@ -1,6 +1,5 @@
 package ui.mainPage;
 
-import application.ConsoleManager;
 import commands.CommandData;
 import commands.CommandDataProcessor;
 import commands.databaseCommands.*;
@@ -23,15 +22,13 @@ import javafx.scene.text.Text;
 import logic.CommandProcessorFactory;
 import logic.ConnectionWithDatabaseSingleton;
 import lombok.Getter;
-import studyGroupSpecific.StudyGroupEntityBuilder;
-import studyGroupSpecific.StudyGroupValidator;
 import ui.localization.LocalizationManager;
-import ui.windows.AcceptWindowFactory;
-import ui.windows.InfoWindowFactory;
-import ui.windows.map.MapPageController;
+import ui.windows.acceptWindow.AcceptWindowFactory;
+import ui.windows.addNewPackage.AddNewWindowFactory;
+import ui.windows.edit.EditWindowFactory;
+import ui.windows.info.InfoWindowFactory;
 import ui.windows.map.MapPageFactory;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
@@ -91,10 +88,11 @@ public class MainController {
         bundle = ResourceBundle.getBundle("localization.main", LocalizationManager.getLocale());
 
         ConnectionWithDatabaseSingleton.getInstance().addNewMessageHandler((res, connection) -> {
-            if (res.getResponsePurpose() == ResponsePurpose.CONFIRM_DELETE) {
-                //TODO:
-                return;
-            }
+
+//            if (res.getResponsePurpose() == ResponsePurpose.CONFIRM_DELETE) {
+//                //TODO: SYNCHRONIZATION
+//                return;
+//            }
         });
     }
     //-----------------------TABLE---------------------------
@@ -204,6 +202,7 @@ public class MainController {
                 }
 
                 ConnectionWithDatabaseSingleton.getInstance().sendOneShot(new Request(data, List.of()));
+                sendRequestToFillTable();
             });
         }
     }
@@ -212,7 +211,6 @@ public class MainController {
         Request request = new Request(new GetMinStudentCountCommandData(), List.of());
 
         CommandExecutionResult result = ConnectionWithDatabaseSingleton.getInstance().sendOneShot(request);
-
         InfoWindowFactory.showInfo(result.getObject().toString());
     }
 
@@ -220,7 +218,6 @@ public class MainController {
         Request request = new Request(new SumOfAverageMarkCommandData(), List.of());
 
         CommandExecutionResult result = ConnectionWithDatabaseSingleton.getInstance().sendOneShot(request);
-
         InfoWindowFactory.showInfo(result.getObject().toString());
     }
 
@@ -234,5 +231,20 @@ public class MainController {
 
     public void mapPressed(MouseEvent mouseEvent) {
         MapPageFactory.openWindow();
+    }
+
+    public void onAddNewPressed(MouseEvent mouseEvent) {
+        AddNewWindowFactory.showAddWindow((studyGroup)->{
+            if (studyGroup.isEmpty()) {
+                return;
+            }
+            Request request = new Request(new AddCommandData(), List.of(studyGroup.get()));
+            ConnectionWithDatabaseSingleton.getInstance().sendOneShot(request);
+            sendRequestToFillTable();
+        });
+    }
+
+    public void onEditPressed(MouseEvent mouseEvent) {
+        EditWindowFactory.showEditWindow(this::sendRequestToFillTable);
     }
 }

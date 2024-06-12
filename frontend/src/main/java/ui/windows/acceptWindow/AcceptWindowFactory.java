@@ -1,4 +1,4 @@
-package ui.windows;
+package ui.windows.acceptWindow;
 
 import dataStructs.StudyGroup;
 import javafx.event.EventHandler;
@@ -10,13 +10,12 @@ import ui.localization.LocalizationManager;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
 
 public class AcceptWindowFactory {
     public static void createAcceptDeleteWindowAndGetResult(List<StudyGroup> list, Consumer<Boolean> onGetResult) {
         try {
-            FXMLLoader loader = new FXMLLoader(AcceptWindowController.class.getResource("confirm-page-with-list.fxml"));
+            FXMLLoader loader = new FXMLLoader(AcceptWindowController.class.getResource("/ui/windows/confirm/confirm-page-with-list.fxml"));
 
             LocalizationManager.addLocalizationBundle(loader, "localization.confirm");
 

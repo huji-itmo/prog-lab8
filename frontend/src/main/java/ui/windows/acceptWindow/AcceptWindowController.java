@@ -1,4 +1,4 @@
-package ui.windows;
+package ui.windows.acceptWindow;
 
 import dataStructs.Coordinates;
 import dataStructs.Country;

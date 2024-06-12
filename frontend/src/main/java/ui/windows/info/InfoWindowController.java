@@ -1,4 +1,4 @@
-package ui.windows;
+package ui.windows.info;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;

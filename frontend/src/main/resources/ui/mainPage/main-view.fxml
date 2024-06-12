@@ -4,7 +4,6 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,7 +15,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@main_page.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.mainPage.MainController">
    <children>
-      <ScrollPane fx:id="mainScrollPane" fitToWidth="true" hmax="0.0" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ScrollPane fx:id="mainScrollPane" fitToWidth="true" hbarPolicy="NEVER" hmax="0.0" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="598.0">
                <children>
@@ -54,24 +53,6 @@
                                  </children>
                               </AnchorPane>
                            </children></AnchorPane>
-                        <AnchorPane fx:id="blueFieldAnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="132.0" prefWidth="600.0" styleClass="prompt_section" stylesheets="@main_page.css" translateZ="15.0">
-                           <children>
-                              <TextField layoutX="225.0" layoutY="42.0" onAction="#onFieldEnter" onMouseClicked="#textFieldOnMouseCLick" prefHeight="26.0" prefWidth="198.0" promptText="%main.enterQueryPrompt" styleClass="main-command-query" AnchorPane.bottomAnchor="49.199999999999996" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" />
-                              <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="45.0" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="10.0">
-                                 <children>
-                                    <AnchorPane layoutX="195.0" layoutY="10.0" minWidth="20.0" prefHeight="100.0" prefWidth="100.0">
-                                       <children>
-                                          <VBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                             <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="data-command-text" text="Text" textAlignment="CENTER" />
-                                             </children>
-                                          </VBox>
-                                       </children>
-                                    </AnchorPane>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </AnchorPane>
                          <AnchorPane prefHeight="200.0" prefWidth="200.0">
                              <VBox.margin>
                                  <Insets left="50.0" right="50.0" top="30.0" />
@@ -82,7 +63,7 @@
                                  <children>
                                     <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-border-style: none;" styleClass="carousel-scroll-pane" vbarPolicy="NEVER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <content>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="1500.0">
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="700.0">
                                              <children>
                                                 <HBox prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                    <children>
@@ -96,6 +77,42 @@
                                                                      </image>
                                                                   </ImageView>
                                                                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%main.commands.clear" wrappingWidth="65.0">
+                                                                     <font>
+                                                                        <Font size="10.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane layoutX="111.0" layoutY="10.0" onMousePressed="#onAddNewPressed" prefHeight="200.0" prefWidth="90.0" styleClass="carousel-item" stylesheets="@main_page.css">
+                                                         <children>
+                                                            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                                               <children>
+                                                                  <ImageView fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@add.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%main.commands.add" wrappingWidth="65.0">
+                                                                     <font>
+                                                                        <Font size="10.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane layoutX="111.0" layoutY="10.0" onMousePressed="#onEditPressed" prefHeight="200.0" prefWidth="90.0" styleClass="carousel-item" stylesheets="@main_page.css">
+                                                         <children>
+                                                            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                                               <children>
+                                                                  <ImageView fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@edit.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%main.commands.edit" wrappingWidth="65.0">
                                                                      <font>
                                                                         <Font size="10.0" />
                                                                      </font>
@@ -144,7 +161,7 @@
                                                          <children>
                                                             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                                                <children>
-                                                                  <ImageView fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                                                  <ImageView fitHeight="150.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                                                                      <image>
                                                                         <Image url="@info.png" />
                                                                      </image>
@@ -162,7 +179,7 @@
                                                          <children>
                                                             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                                                <children>
-                                                                  <ImageView fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                                                  <ImageView fitHeight="150.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                                                                      <image>
                                                                         <Image url="@map.png" />
                                                                      </image>

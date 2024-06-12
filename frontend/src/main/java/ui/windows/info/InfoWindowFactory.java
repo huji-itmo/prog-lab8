@@ -1,4 +1,4 @@
-package ui.windows;
+package ui.windows.info;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,7 +11,7 @@ public class InfoWindowFactory {
 
     public static void showInfo(String text) {
         try {
-            FXMLLoader loader = new FXMLLoader(InfoWindowController.class.getResource("confirm-page.fxml"));
+            FXMLLoader loader = new FXMLLoader(InfoWindowController.class.getResource("/ui/windows/confirm/confirm-page.fxml"));
 
             LocalizationManager.addLocalizationBundle(loader, "localization.confirm");
 
