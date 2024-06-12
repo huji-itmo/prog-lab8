@@ -23,6 +23,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import logic.ConnectionWithDatabaseSingleton;
+import password.PasswordHasher;
 import ui.localization.LocalizationManager;
 import ui.mainPage.MainView;
 
@@ -118,7 +119,7 @@ public class LoginController {
         } else {
             data = new LoginCommandData();
         }
-        Request request = new Request(data, List.of(loginTextField.getText(), passwordField.getText()));
+        Request request = new Request(data, List.of(loginTextField.getText(), PasswordHasher.hashPassword(passwordField.getText())));
 
         CommandExecutionResult result = ConnectionWithDatabaseSingleton.getInstance().sendOneShot(request);
 
