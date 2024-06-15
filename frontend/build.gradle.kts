@@ -14,9 +14,7 @@ repositories {
 dependencies {
 
 
-  implementation(fileTree("C:/code/itmo/prog/bin/")
-          .include("shared.jar")
-          .include("client.jar"))
+  implementation(fileTree("C:/code/itmo/prog/bin/").include("client.jar"))
 }
 javafx {
   modules("javafx.controls", "javafx.fxml", "javafx.web")

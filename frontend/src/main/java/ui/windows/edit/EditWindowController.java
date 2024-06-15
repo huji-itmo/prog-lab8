@@ -1,7 +1,6 @@
 package ui.windows.edit;
 
 import commands.databaseCommands.RemoveByIdCommandData;
-import commands.databaseCommands.ShowCommandData;
 import commands.databaseCommands.UpdateByIdCommandData;
 import dataStructs.*;
 import dataStructs.communication.CommandExecutionResult;
@@ -18,9 +17,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import logic.ConnectionWithDatabaseSingleton;
 import lombok.Getter;
+import lombok.Setter;
 import ui.localization.LocalizationManager;
+import ui.windows.info.InfoWindowFactory;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -31,6 +31,7 @@ public class EditWindowController {
     public Text idWarning;
     public ComboBox<String> idComboBox;
     private ResourceBundle bundle;
+    @Setter
     private List<StudyGroup> list;
 
     @Getter
@@ -52,15 +53,15 @@ public class EditWindowController {
         firstPageHolder.setVisible(true);
         secondPageHolder.setVisible(false);
 
-        Request request = new Request(new ShowCommandData(), List.of());
-        CommandExecutionResult res = ConnectionWithDatabaseSingleton.getInstance().sendOneShot(request);
-
-
-        list = res.getStudyGroupList().stream().sorted(Comparator.comparingLong(StudyGroup::getId)).toList();
-
-        list.stream().mapToLong(StudyGroup::getId).forEach(id -> idComboBox.getItems().add(Long.toString(id)));
-
         disableAll(true);
+    }
+
+    public void fillOptions(List<StudyGroup> studyGroups) {
+        list = studyGroups;
+
+        list.stream()
+                .mapToLong(StudyGroup::getId)
+                .forEach(id -> idComboBox.getItems().add(Long.toString(id)));
     }
 
     public void disableAll(boolean val) {
@@ -474,8 +475,13 @@ public class EditWindowController {
 
         System.out.println(studyGroup);
 
-        Request request = new Request(new UpdateByIdCommandData(), List.of(editingId, studyGroup));
-        ConnectionWithDatabaseSingleton.getInstance().sendOneShot(request);
+        Request request = new Request(new UpdateByIdCommandData(), List.of(editingId, studyGroup.get()));
+        CommandExecutionResult res = ConnectionWithDatabaseSingleton.getInstance().sendOneShot(request);
+
+        if (res.getCode() != 200) {
+            InfoWindowFactory.showInfo(res.getText());
+            return;
+        }
 
         nameWarningText.getScene().getWindow().hide();
     }

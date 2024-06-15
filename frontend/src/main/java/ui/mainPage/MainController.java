@@ -3,10 +3,14 @@ package ui.mainPage;
 import commands.CommandData;
 import commands.CommandDataProcessor;
 import commands.databaseCommands.*;
-import dataStructs.*;
+import dataStructs.Coordinates;
+import dataStructs.Country;
+import dataStructs.Person;
+import dataStructs.StudyGroup;
 import dataStructs.communication.CommandExecutionResult;
 import dataStructs.communication.Request;
 import dataStructs.communication.enums.ResponsePurpose;
+import dataStructs.undo.TransactionLog;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -30,6 +34,7 @@ import ui.windows.info.InfoWindowFactory;
 import ui.windows.map.MapPageFactory;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -80,6 +85,9 @@ public class MainController {
     @FXML
     public VBox native_command_field;
 
+    @Getter
+    private static List<StudyGroup> tableContents = new ArrayList<>();
+
     @FXML
     void initialize(){
         setUserNamePretty();
@@ -89,10 +97,22 @@ public class MainController {
 
         ConnectionWithDatabaseSingleton.getInstance().addNewMessageHandler((res, connection) -> {
 
-//            if (res.getResponsePurpose() == ResponsePurpose.CONFIRM_DELETE) {
-//                //TODO: SYNCHRONIZATION
-//                return;
-//            }
+            if (res.getResponsePurpose() == ResponsePurpose.UPDATE) {
+                TransactionLog<StudyGroup> log = (TransactionLog<StudyGroup>) res.getObject();
+                System.out.println("New log! " + log);
+                log.getChangesList().forEach((change) -> {
+                    StudyGroup group = change.getElement();
+
+                    if (change.isAdded()) {
+                        if (!tableContents.contains(group))
+                            tableContents.add(group);
+                    } else {
+                        tableContents.remove(group);
+                    }
+                });
+
+                fillTable();
+            }
         });
     }
     //-----------------------TABLE---------------------------
@@ -100,15 +120,15 @@ public class MainController {
         Request request = new Request(new ShowCommandData(), List.of());
 
         CommandExecutionResult result = ConnectionWithDatabaseSingleton.getInstance().sendOneShot(request);
+        tableContents.clear();
 
-        List<StudyGroup> studyGroupList = result.getStudyGroupList().stream().sorted(Comparator.comparingLong(StudyGroup::getId)).toList();
+        tableContents.addAll(result.getStudyGroupList().stream().sorted(Comparator.comparingLong(StudyGroup::getId)).toList());
 
-        fillTable(studyGroupList);
+        fillTable();
     }
 
-    void fillTable(List<StudyGroup> studyGroupList) {
-
-        ObservableList<StudyGroup> list = FXCollections.observableArrayList(studyGroupList);
+    void fillTable() {
+        ObservableList<StudyGroup> list = FXCollections.observableArrayList(tableContents);
         list.forEach(System.out::println);
         table_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         table_name.setCellValueFactory(new PropertyValueFactory<>("name"));
