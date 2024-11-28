@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@main_page.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.mainPage.MainController">
+   <children>
+      <ScrollPane fx:id="mainScrollPane" fitToWidth="true" hbarPolicy="NEVER" hmax="0.0" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="598.0">
+               <children>
+                  <VBox fx:id="native_command_field" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane minHeight="50.0" prefHeight="50.0" prefWidth="200.0" styleClass="header" translateZ="10.0">
+                           <children>
+                              <AnchorPane minWidth="140.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="15.0">
+                                 <children>
+                                    <Text id="logo-left" strokeType="OUTSIDE" strokeWidth="0.0" text="%main.logoLeft" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <Text id="logo-right" strokeType="OUTSIDE" strokeWidth="0.0" text="%main.logoRight" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Text fx:id="userNameText" strokeType="OUTSIDE" strokeWidth="0.0" text="drakon" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="12.0">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <AnchorPane minWidth="60.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Circle fill="#3660e0" radius="18.0" stroke="TRANSPARENT" strokeType="INSIDE" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="6.0" />
+                                          <Text fx:id="firstLetterUserNameText" fill="WHITE" layoutX="22.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="D" textAlignment="CENTER" wrappingWidth="55.0" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+                                             <font>
+                                                <Font name="Nunito Regular" size="21.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                           </children></AnchorPane>
+                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                             <VBox.margin>
+                                 <Insets left="50.0" right="50.0" top="30.0" />
+                             </VBox.margin>
+                             <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h-three-text" text="%main.fastOptions" />
+                              <AnchorPane minHeight="105.0">
+                                 <children>
+                                    <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-border-style: none;" styleClass="carousel-scroll-pane" vbarPolicy="NEVER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="700.0">
+                                             <children>
+                                                <HBox prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <children>
+                                                      <AnchorPane onMousePressed="#clearMousePressed" prefHeight="200.0" prefWidth="90.0" styleClass="carousel-item" stylesheets="@main_page.css">
+                                                         <children>
+                                                            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                                               <children>
+                                                                  <ImageView fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@trash_can.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%main.commands.clear" wrappingWidth="65.0">
+                                                                     <font>
+                                                                        <Font size="10.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane layoutX="111.0" layoutY="10.0" onMousePressed="#onAddNewPressed" prefHeight="200.0" prefWidth="90.0" styleClass="carousel-item" stylesheets="@main_page.css">
+                                                         <children>
+                                                            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                                               <children>
+                                                                  <ImageView fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@add.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%main.commands.add" wrappingWidth="65.0">
+                                                                     <font>
+                                                                        <Font size="10.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane layoutX="111.0" layoutY="10.0" onMousePressed="#onEditPressed" prefHeight="200.0" prefWidth="90.0" styleClass="carousel-item" stylesheets="@main_page.css">
+                                                         <children>
+                                                            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                                               <children>
+                                                                  <ImageView fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@edit.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%main.commands.edit" wrappingWidth="65.0">
+                                                                     <font>
+                                                                        <Font size="10.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane layoutX="10.0" layoutY="10.0" onMousePressed="#minStudentMousePress" prefHeight="200.0" prefWidth="90.0" styleClass="carousel-item" stylesheets="@main_page.css">
+                                                         <children>
+                                                            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                                               <children>
+                                                                  <ImageView fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@user_icon.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%main.commands.minStudentCount" wrappingWidth="65.0">
+                                                                     <font>
+                                                                        <Font size="10.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane layoutX="111.0" layoutY="10.0" onMousePressed="#sumOfAverageMarkPressed" prefHeight="200.0" prefWidth="90.0" styleClass="carousel-item" stylesheets="@main_page.css">
+                                                         <children>
+                                                            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                                               <children>
+                                                                  <ImageView fitHeight="150.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@count.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%main.commands.SumOfAverageMark" wrappingWidth="65.0">
+                                                                     <font>
+                                                                        <Font size="10.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane layoutX="212.0" layoutY="10.0" onMousePressed="#infoPressed" prefHeight="200.0" prefWidth="90.0" styleClass="carousel-item" stylesheets="@main_page.css">
+                                                         <children>
+                                                            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                                               <children>
+                                                                  <ImageView fitHeight="150.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@info.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%main.commands.info" wrappingWidth="65.0">
+                                                                     <font>
+                                                                        <Font size="10.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </AnchorPane>
+                                                      <AnchorPane layoutX="312.0" layoutY="10.0" onMousePressed="#mapPressed" prefHeight="200.0" prefWidth="90.0" styleClass="carousel-item" stylesheets="@main_page.css">
+                                                         <children>
+                                                            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                                               <children>
+                                                                  <ImageView fitHeight="150.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@map.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%main.openMap" wrappingWidth="65.0">
+                                                                     <font>
+                                                                        <Font size="10.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                    </ScrollPane>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </AnchorPane>
+                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h-three-text" text="%main.oldOnPortal" />
+                                 <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                     <ScrollPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                         <AnchorPane minHeight="0.0" minWidth="1100.0">
+                                             <TableView fx:id="table" fixedCellSize="40.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                 <columns>
+                                                     <TableColumn fx:id="table_id" prefWidth="75.0" text="id" />
+                                                     <TableColumn fx:id="table_owner" prefWidth="75.0" text="owner" />
+                                                     <TableColumn fx:id="table_name" prefWidth="75.0" text="name" />
+                                                     <TableColumn fx:id="table_creationDate" prefWidth="75.0" text="creationDate" />
+                                                     <TableColumn fx:id="table_studentsCount" prefWidth="75.0" text="studentsCount" />
+                                                     <TableColumn fx:id="table_averageMark" prefWidth="75.0" text="averageMark" />
+                                                     <TableColumn fx:id="table_FormOfEducation" prefWidth="75.0" text="FormOfEdcuation" />
+                                                     <TableColumn fx:id="table_semester" prefWidth="75.0" text="semester" />
+                                                 </columns>
+                                             </TableView>
+                                             <TableView fx:id="coordinates_table" fixedCellSize="40.0" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.leftAnchor="600.0" AnchorPane.topAnchor="0.0">
+                                                 <columns>
+                                                     <TableColumn fx:id="table_coordinates_x" prefWidth="75.0" text="x" />
+                                                     <TableColumn fx:id="table_coordinates_y" prefWidth="75.0" text="y" />
+                                                 </columns>
+                                             </TableView>
+                                             <TableView fx:id="group_admin_table" fixedCellSize="40.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="750.0" AnchorPane.topAnchor="0.0">
+                                                 <columns>
+                                                     <TableColumn fx:id="table_groupAdmin_name" prefWidth="75.0" text="name" />
+                                                     <TableColumn fx:id="table_groupAdmin_birthday" prefWidth="75.0" text="birthday" />
+                                                     <TableColumn fx:id="table_groupAdmin_weight" prefWidth="75.0" text="weight" />
+                                                     <TableColumn fx:id="table_groupAdmin_passportID" prefWidth="75.0" text="passportID" />
+                                                     <TableColumn fx:id="table_groupAdmin_nationality" prefWidth="75.0" text="nationality" />
+                                                 </columns>
+                                             </TableView>
+                                         </AnchorPane>
+                                     </ScrollPane>
+                                 </AnchorPane>
+                             </VBox>
+                         </AnchorPane>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
